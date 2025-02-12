@@ -1,14 +1,30 @@
+CHOCOLATE = "Chocolate cake"
+VANILLA = "Vanilla cake"
+STAWBERRY = "Strawberry Cake"
+
 cakes = {
-    "Chocolate cake": 15.0,
-    "Vanilla cake": 12.0,
-    "Red velvet cake": 18.0,
-    "Cheesecake": 20.0,
-    "Carrot cake": 14.0,
-    "Black forest cake": 22.0,
-    "Lemon cake": 13.0,
-    "Coffee cake": 16.0,
-    "Banana cake": 11.0,
-    "Strawberry cake": 19.0
+    CHOCOLATE: {
+        "price": 15.0,
+        "has_discount": True,
+        "stock": 25,
+        "ingredients": ["Flour", "Cocoa powder", "Sugar", "Eggs"]
+    },
+    VANILLA : {
+        "price": 18.0,
+        "has_discount": False,
+        "stock": 10,
+        "ingredients": ["milk", "egg","vanilla"]
+    },
+    STAWBERRY : {
+        "price": 18,  
+        "has_discount": True,
+        "stock":20, 
+        "ingredients": ["Flour", "Butter", "Strawberries", "Baking powder", "Milk"]
+    }
 }
+
+CHOCO_CAKE = cakes["Chocolate cake"]
+VANIL_CAKE = cakes["Vanilla cake"]
+STAWB_CAKE = cakes["Strawberry Cake"]
 
 
