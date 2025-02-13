@@ -6,6 +6,7 @@ import os
 import time
 import random
 from fpdf import FPDF
+from products import find_max_min_stocks()
 
 #os.system("clear") #for Macos
 
@@ -49,10 +50,13 @@ while time.time() < end_time:
             return f"sorry, {cake_name} dont have! Finish shopping"
         
 
+
+
+
     cake_choice = random.choice(list(products.cakes.keys()))
     print(buy_cake(cake_choice))
 
-    
+    #add 
     
 
     time.sleep(0.4)

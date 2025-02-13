@@ -28,3 +28,20 @@ VANIL_CAKE = cakes["Vanilla cake"]
 STAWB_CAKE = cakes["Strawberry Cake"]
 
 
+stocks =(CHOCO_CAKE["stock"], 
+         VANIL_CAKE["stock"],
+         STAWB_CAKE["stock"]
+         )
+
+from typing import Any
+
+def find_max_min_stocks(stocks) -> tuple :
+    min_stock = min(stocks)
+    max_stock = max(stocks)
+    return min_stock, max_stock
+
+min_stock, max_stock = find_max_min_stocks(stocks)
+
+print(find_max_min_stocks(stocks))
+
+
