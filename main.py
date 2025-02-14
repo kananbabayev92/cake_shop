@@ -1,4 +1,4 @@
-from text import USER_PROMPT
+
 import products
 import config
 import user
@@ -6,7 +6,7 @@ import os
 import time
 import random
 from fpdf import FPDF
-from products import find_max_min_stocks()
+from products import find_max_min_stocks , stocks
 
 #os.system("clear") #for Macos
 
@@ -17,6 +17,25 @@ TOTAL_SALES_CAKE = 0
 start_time = time.time()
 end_time = start_time + 10
 
+def buy_cake(cake_name):
+    global TOTAL_SALES_CAKE
+    cake = products.cakes[cake_name]
+
+    if cake["stock"] > 0:
+        quantity_sold = random.choice(find_max_min_stocks(stocks))
+
+        if quantity_sold > cake["stock"]:
+            quantity_sold = cake["stock"]
+
+        cake["stock"]-= quantity_sold
+        TOTAL_SALES_CAKE += quantity_sold
+        return f"Buy {cake_name} price {cake["price"]}  AZN! in stock: {cake["stock"]}"
+    else:
+        return f"sorry, {cake_name} dont have! Finish shopping"
+    
+cake_choice = random.choice(list(products.cakes.keys()))
+print(buy_cake(cake_choice))
+
 
 while time.time() < end_time:
     print("     ...ding..dong...\nWelcome to the Kenius chocolate shop!")  
@@ -26,47 +45,13 @@ while time.time() < end_time:
     #show cake list
     for cake_name, cake_details in products.cakes.items():
         print(f"Cake: {cake_name}")
-        print(f"Price: {cake_details['price']} AZN")
-        print(f"Discount: {'Yes' if cake_details['has_discount'] else 'No'}")
-        print(f"Stock: {cake_details['stock']} available")
-        print(f"Ingredients: {', '.join(cake_details['ingredients'])}\n")   
-
     os.system("cls") #for windows
 
-    def buy_cake(cake_name):
-        global TOTAL_SALES_CAKE
-        cake = products.cakes[cake_name]
 
-        if cake["stock"] > 0:
-            quantity_sold = random.randint(1, 2)
 
-            if quantity_sold > cake["stock"]:
-                quantity_sold = cake["stock"]
     
-            cake["stock"]-= quantity_sold
-            TOTAL_SALES_CAKE += quantity_sold
-            return f"Buy {cake_name} price {cake["price"]}  AZN! in stock: {cake["stock"]}"
-        else:
-            return f"sorry, {cake_name} dont have! Finish shopping"
-        
-
-
-
-
-    cake_choice = random.choice(list(products.cakes.keys()))
-    print(buy_cake(cake_choice))
-
-    #add 
-    
-
     time.sleep(0.4)
     
-# print("Chocolate cake", products.CHOCO_CAKE["stock"])
-# print("Strawberry Cake", products.STAWB_CAKE["stock"])
-# print("Vanilla cake", products.VANIL_CAKE["stock"])
-# print("Total sales: ", TOTAL_SALES_CAKE)
-
-
 pdf = FPDF()
 pdf = FPDF(format='letter')
 pdf.add_page()
