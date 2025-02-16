@@ -19,7 +19,7 @@ cakes = {
         "price": 18,  
         "has_discount": True,
         "stock":20, 
-        "ingredients": ["flour", "butter", "strawberries", "baking powder", "milk"]
+        "ingredients": ["flour", "sugar", "strawberries", "baking powder", "milk"]
     }
 }
 
@@ -28,7 +28,7 @@ VANIL_CAKE = cakes["Vanilla cake"]
 STAWB_CAKE = cakes["Strawberry Cake"]
 
 
-stocks_data =(CHOCO_CAKE["stock"], 
+stocks = (CHOCO_CAKE["stock"], 
          VANIL_CAKE["stock"],
          STAWB_CAKE["stock"]
          )
@@ -42,6 +42,6 @@ def find_max_min_stocks(stocks) -> tuple :
 
 min_stock, max_stock = find_max_min_stocks(stocks)
 
-print(type(find_max_min_stocks(stocks)))
+print(find_max_min_stocks(stocks))
 
 
