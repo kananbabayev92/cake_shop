@@ -7,3 +7,7 @@ class Order:
     def add_cake(self, cake):
         self.cakes.append(cake)
         self.total += cake.price
+
+
+
+

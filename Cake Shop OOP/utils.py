@@ -46,3 +46,25 @@ class PdfExporter:
 
         pdf.output(self.filename)
         print(f"PDF file saved as {self.filename}")
+
+
+class PromoCode:
+    def __init__(self, status: bool, promocode: str, percent: float):
+        self.status = status
+        self.promocode = promocode
+        self.percent = percent
+
+    def apply_promocode(self, price: float ):
+        if self.status:
+            discount = (self.percent / 100) * price
+            new_price = price - discount
+            return new_price
+        else:
+            return price
+        
+user_promocode = input("Please give promocode: ").capitalize().replace(" ", "")
+
+promo = PromoCode(True, user_promocode, 20)
+new_price = promo.apply_promocode(25)
+print(new_price)
+
