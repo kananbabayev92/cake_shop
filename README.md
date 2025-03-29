@@ -19,7 +19,7 @@ Welcome to the **Cake Shop** project! This is a Python-based application that he
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.13
 - pip
 - pipenv (optional, for managing virtual environments)
 
