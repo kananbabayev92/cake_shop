@@ -12,5 +12,11 @@ class Magazine:
         for cake in self.cakes:
             print(f"{cake.name}: ${cake.price}")
             logging.INFO("showing cake name")
+
+
+cake = Magazine("delicious cakes", [])
+
+print(cake)
+
      
     
